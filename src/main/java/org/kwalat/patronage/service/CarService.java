@@ -22,15 +22,15 @@ public class CarService {
     }
 
     public Car get(long id){
-        return cars.stream().filter(car -> car.getId().equals(id)).findFirst().get();
+        return carRepository.findOne(id);
     }
     public void add(Car car){
-        carRepository.save(car);
+            carRepository.save(car);
     }
     public void delete(long id){
         carRepository.delete(id);
     }
-    public void update(Car car){
+    public void update(long id, Car car){
         carRepository.save(car);
     }
 }

@@ -22,7 +22,7 @@ public class CustomerService {
     }
 
     public Customer get(long id){
-        return customers.stream().filter(customer -> customer.getId().equals(id)).findFirst().get();
+        return customerRepository.findOne(id);
     }
     public void add(Customer customer){
         customerRepository.save(customer);
@@ -30,7 +30,7 @@ public class CustomerService {
     public void delete(long id){
         customerRepository.delete(id);
     }
-    public void update(Customer customer){
+    public void update(long id, Customer customer){
         customerRepository.save(customer);
     }
 }

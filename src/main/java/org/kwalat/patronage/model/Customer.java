@@ -20,8 +20,6 @@ public class Customer {
 
     private String personalNumber;
 
-
-
     protected Customer() {
     }
 
