@@ -7,17 +7,12 @@ import javax.persistence.Id;
 
 @Entity
 public class Customer {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     private String firstName;
-
     private String lastName;
-
     private String gender;
-
     private String personalNumber;
 
     protected Customer() {
@@ -69,8 +64,7 @@ public class Customer {
 
     @Override
     public String toString() {
-        return String.format("Customer[id=%d, firstName='%s', lastName='%s', gender='%s', personalNumber='%s']", id,
-                firstName, lastName, gender, personalNumber);
+        return String.format("Customer[id=%d, firstName='%s', lastName='%s', gender='%s', personalNumber='%s']", id, firstName, lastName, gender, personalNumber);
     }
 
 }

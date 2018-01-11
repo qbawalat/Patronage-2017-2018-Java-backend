@@ -1,8 +1,8 @@
 package org.kwalat.patronage.controller;
 
 import org.kwalat.patronage.model.Car;
-import org.kwalat.patronage.model.Customer;
-import org.kwalat.patronage.service.CarService;
+import org.kwalat.patronage.service.car.CarServiceCrudRepo;
+import org.kwalat.patronage.service.car.CarServiceListaLokalna;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,31 +12,31 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    private CarService carService;
+    private CarServiceCrudRepo carServiceCrudRepo;
 
     @RequestMapping("/cars")
-    public List<Car> getAll(){
-        return carService.getAll();
+    public List<Car> getAll() {
+        return carServiceCrudRepo.getAll();
     }
 
     @RequestMapping("/cars/{id}")
-    public Car get(@PathVariable  long id){
-        return carService.get(id);
+    public Car get(@PathVariable Long id) {
+        return carServiceCrudRepo.get(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/cars")
-    public void add(@RequestBody Car car){
-        carService.add(car);
+    @RequestMapping(method = RequestMethod.POST, value = "/cars")
+    public void add(@RequestBody Car car) {
+        carServiceCrudRepo.add(car);
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value="/cars/{id}")
-    public void delete(@PathVariable long id){
-        carService.delete(id);
+    @RequestMapping(method = RequestMethod.DELETE, value = "/cars/{id}")
+    public void delete(@PathVariable Long id) {
+        carServiceCrudRepo.delete(id);
     }
 
-    @RequestMapping(method = RequestMethod.PUT, value="/cars/{id}")
-    public void update(@RequestBody Car car, @PathVariable long id){
-        carService.update(id, car);
+    @RequestMapping(method = RequestMethod.PUT, value = "/cars/{id}")
+    public void update(@RequestBody Car car, @PathVariable Long id) {
+        carServiceCrudRepo.update(id, car);
     }
 
 }

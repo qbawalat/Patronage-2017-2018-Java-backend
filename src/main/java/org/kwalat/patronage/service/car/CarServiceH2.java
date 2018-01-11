@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public interface CarService {
+public interface CarServiceH2 {
     public List<Car> getAll();
 
     public Car get(Long id);

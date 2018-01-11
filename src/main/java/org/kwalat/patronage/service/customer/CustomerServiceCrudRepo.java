@@ -1,4 +1,4 @@
-package org.kwalat.patronage.service;
+package org.kwalat.patronage.service.customer;
 
 import org.kwalat.patronage.model.Customer;
 import org.kwalat.patronage.repository.CustomerRepository;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerService {
+public class CustomerServiceCrudRepo implements CustomerServiceH2{
     @Autowired
     private CustomerRepository customerRepository;
 
@@ -21,16 +21,16 @@ public class CustomerService {
         return customers;
     }
 
-    public Customer get(long id){
+    public Customer get(Long id){
         return customerRepository.findOne(id);
     }
     public void add(Customer customer){
         customerRepository.save(customer);
     }
-    public void delete(long id){
+    public void delete(Long id){
         customerRepository.delete(id);
     }
-    public void update(long id, Customer customer){
+    public void update(Long id, Customer customer){
         customerRepository.save(customer);
     }
 }

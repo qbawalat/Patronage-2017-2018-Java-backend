@@ -1,9 +1,8 @@
 package org.kwalat.patronage.controller;
 
 import org.kwalat.patronage.model.Customer;
-import org.kwalat.patronage.repository.CustomerRepository;
-import org.kwalat.patronage.service.CustomerService;
-import org.omg.CORBA.Request;
+import org.kwalat.patronage.service.customer.CustomerServiceCrudRepo;
+import org.kwalat.patronage.service.customer.CustomerServiceListaLokalna;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,31 +12,31 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    private CustomerService customerService;
+    private CustomerServiceListaLokalna customerServiceCrudRepo;
 
     @RequestMapping("/customers")
     public List<Customer> getAll(){
-        return customerService.getAll();
+        return customerServiceCrudRepo.getAll();
     }
 
     @RequestMapping("/customers/{id}")
-    public Customer get(@PathVariable  long id){
-        return customerService.get(id);
+    public Customer get(@PathVariable  Long id){
+        return customerServiceCrudRepo.get(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value="/customers")
     public void add(@RequestBody Customer customer){
-        customerService.add(customer);
+        customerServiceCrudRepo.add(customer);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value="/customers/{id}")
-    public void delete(@PathVariable long id){
-        customerService.delete(id);
+    public void delete(@PathVariable Long id){
+        customerServiceCrudRepo.delete(id);
     }
 
     @RequestMapping(method = RequestMethod.PUT, value="/customers/{id}")
-    public void update(@RequestBody Customer customer, @PathVariable long id){
-        customerService.update(id, customer);
+    public void update(@RequestBody Customer customer, @PathVariable Long id){
+        customerServiceCrudRepo.update(id, customer);
     }
 
 }

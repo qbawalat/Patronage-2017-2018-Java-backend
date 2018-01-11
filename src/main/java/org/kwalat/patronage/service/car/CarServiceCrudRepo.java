@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CarServiceListaZRepo implements CarServiceH2 {
+public class CarServiceCrudRepo implements CarServiceH2 {
     @Autowired
     private CarRepository carRepository;
     private List<Car> cars;
