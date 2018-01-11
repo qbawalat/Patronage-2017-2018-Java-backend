@@ -1,4 +1,4 @@
-package org.kwalat.patronage.service;
+package org.kwalat.patronage.service.car;
 
 import org.kwalat.patronage.model.Car;
 import org.kwalat.patronage.repository.CarRepository;
@@ -9,28 +9,30 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CarService {
+public class CarServiceListaZRepo implements CarServiceH2 {
     @Autowired
     private CarRepository carRepository;
-
     private List<Car> cars;
 
-    public List<Car>getAll(){
+    public List<Car> getAll() {
         List<Car> cars = new ArrayList<>();
         carRepository.findAll().forEach(cars::add);
         return cars;
     }
 
-    public Car get(long id){
+    public Car get(Long id) {
         return carRepository.findOne(id);
     }
-    public void add(Car car){
-            carRepository.save(car);
+
+    public void add(Car car) {
+        carRepository.save(car);
     }
-    public void delete(long id){
+
+    public void delete(Long id) {
         carRepository.delete(id);
     }
-    public void update(long id, Car car){
+
+    public void update(Long id, Car car) {
         carRepository.save(car);
     }
 }
