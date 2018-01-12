@@ -1,10 +1,13 @@
 package org.kwalat.patronage.model;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.*;
 import java.util.Date;
 
 @Entity
@@ -12,14 +15,32 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String engineSize;
+
+    @NotNull
+    @Min(50)
+    @Max(6999)
+    private Integer engineSize;
+
+    @NotNull
+    @Pattern(regexp = "SKODA|HONDA|FIAT")
     private String brand;
-    private Integer seats;
+
+    @Min(1)
+    @Max(6)
+    private Byte seats;
+
+    @NotNull
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Past
     private Date firstRegistrationDate;
+
+    @NotNull
     private Date registrationBookDateOfIssue;
+
+    @NotNull
     private String licenceNumber;
 
-    public Car(String engineSize, String brand, Integer seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {
+    public Car(Integer engineSize, String brand, Byte seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {
         this.engineSize = engineSize;
         this.brand = brand;
         this.seats = seats;
@@ -39,11 +60,11 @@ public class Car {
         this.id = id;
     }
 
-    public String getEngineSize() {
+    public Integer getEngineSize() {
         return engineSize;
     }
 
-    public void setEngineSize(String engineSize) {
+    public void setEngineSize(Integer engineSize) {
         this.engineSize = engineSize;
     }
 
@@ -55,11 +76,11 @@ public class Car {
         this.brand = brand;
     }
 
-    public Integer getSeats() {
+    public Byte getSeats() {
         return seats;
     }
 
-    public void setSeats(Integer seats) {
+    public void setSeats(Byte seats) {
         this.seats = seats;
     }
 

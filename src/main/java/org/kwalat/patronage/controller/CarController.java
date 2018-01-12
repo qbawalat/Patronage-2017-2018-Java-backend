@@ -1,7 +1,7 @@
 package org.kwalat.patronage.controller;
 
 import org.kwalat.patronage.model.Car;
-import org.kwalat.patronage.service.car.CarServiceLocalListBean;
+import org.kwalat.patronage.service.car.CarServiceH2Bean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +11,7 @@ import java.util.List;
 public class CarController {
 
     @Autowired
-    private CarServiceLocalListBean carServiceH2Bean;
+    private CarServiceH2Bean carServiceH2Bean;
 
     @RequestMapping("/cars")
     public List<Car> getAll() {
