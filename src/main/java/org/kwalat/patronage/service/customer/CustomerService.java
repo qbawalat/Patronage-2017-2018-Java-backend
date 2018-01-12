@@ -4,7 +4,7 @@ import org.kwalat.patronage.model.Customer;
 
 import java.util.List;
 
-public interface CustomerServiceH2 {
+public interface CustomerService {
     public List<Customer> getAll();
 
     public Customer get(Long id);

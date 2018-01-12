@@ -1,8 +1,7 @@
 package org.kwalat.patronage.controller;
 
 import org.kwalat.patronage.model.Customer;
-import org.kwalat.patronage.service.customer.CustomerServiceCrudRepo;
-import org.kwalat.patronage.service.customer.CustomerServiceListaLokalna;
+import org.kwalat.patronage.service.customer.CustomerServiceLocalListBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +11,7 @@ import java.util.List;
 public class CustomerController {
 
     @Autowired
-    private CustomerServiceListaLokalna customerServiceCrudRepo;
+    private CustomerServiceLocalListBean customerServiceCrudRepo;
 
     @RequestMapping("/customers")
     public List<Customer> getAll(){

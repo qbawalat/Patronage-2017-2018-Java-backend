@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomerServiceCrudRepo implements CustomerServiceH2{
+public class CustomerServiceH2Bean implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 

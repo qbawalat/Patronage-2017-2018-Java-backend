@@ -5,19 +5,15 @@ import org.kwalat.patronage.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CarServiceCrudRepo implements CarServiceH2 {
+public class CarServiceH2Bean implements CarService {
     @Autowired
     private CarRepository carRepository;
-    private List<Car> cars;
 
     public List<Car> getAll() {
-        List<Car> cars = new ArrayList<>();
-        carRepository.findAll().forEach(cars::add);
-        return cars;
+        return carRepository.findAll();
     }
 
     public Car get(Long id) {

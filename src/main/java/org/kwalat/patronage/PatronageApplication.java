@@ -16,6 +16,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.util.Date;
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"org.kwalat.patronage"})
 @EntityScan("org.kwalat.patronage")
@@ -33,8 +35,8 @@ public class PatronageApplication {
 			customerRepository.save(new Customer("Jack", "Bauer", "male", "97123008537"));
 			customerRepository.save(new Customer("Chloe", "O'Brian", "female", "97123002533"));
 			customerRepository.save(new Customer("Kim", "Bauer", "female", "94120408535"));
-			carRepository.save(new Car("50-6999", "HONDA", 4,"1900-01-01", "1900-01-01", "ZS502525"));
-			carRepository.save(new Car("50-3999", "SKODA", 6,"1901-01-01", "1901-01-01", "GZ502255"));
+			carRepository.save(new Car("50-6999", "HONDA", 4,new Date(), new Date(), "ZS502525"));
+			carRepository.save(new Car("50-3999", "SKODA", 6,new Date(), new Date(), "GZ502255"));
 			log.info("Customers found with findAll():");
 			log.info("-------------------------------");
 			for (Customer customer : customerRepository.findAll()) {

@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Date;
 
 @Entity
 public class Car {
@@ -14,12 +15,11 @@ public class Car {
     private String engineSize;
     private String brand;
     private Integer seats;
-    private String firstRegistrationDate;
-    private String registrationBookDateOfIssue;
+    private Date firstRegistrationDate;
+    private Date registrationBookDateOfIssue;
     private String licenceNumber;
 
-
-    public Car(String engineSize, String brand, Integer seats, String firstRegistrationDate, String registrationBookDateOfIssue, String licenceNumber) {
+    public Car(String engineSize, String brand, Integer seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {
         this.engineSize = engineSize;
         this.brand = brand;
         this.seats = seats;
@@ -27,7 +27,6 @@ public class Car {
         this.registrationBookDateOfIssue = registrationBookDateOfIssue;
         this.licenceNumber = licenceNumber;
     }
-
 
     protected Car() {
     }
@@ -64,19 +63,19 @@ public class Car {
         this.seats = seats;
     }
 
-    public String getFirstRegistrationDate() {
+    public Date getFirstRegistrationDate() {
         return firstRegistrationDate;
     }
 
-    public void setFirstRegistrationDate(String firstRegistrationDate) {
+    public void setFirstRegistrationDate(Date firstRegistrationDate) {
         this.firstRegistrationDate = firstRegistrationDate;
     }
 
-    public String getRegistrationBookDateOfIssue() {
+    public Date getRegistrationBookDateOfIssue() {
         return registrationBookDateOfIssue;
     }
 
-    public void setRegistrationBookDateOfIssue(String registrationBookDateOfIssue) {
+    public void setRegistrationBookDateOfIssue(Date registrationBookDateOfIssue) {
         this.registrationBookDateOfIssue = registrationBookDateOfIssue;
     }
 

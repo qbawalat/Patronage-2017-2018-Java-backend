@@ -4,12 +4,13 @@ import org.kwalat.patronage.model.Car;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class CarServiceListaLokalna implements CarServiceH2 {
-    private List<Car> cars = new ArrayList<>(Arrays.asList(new Car("50-6999", "HONDA", 4, "1900-01-01", "1900-01-01", "ZS502525"), new Car("50-3999", "SKODA", 6, "1901-01-01", "1901-01-01", "GZ502255")));
+public class CarServiceLocalListBean implements CarService {
+
+    private static Long nextId = 0L;
+    private List<Car> cars = new ArrayList<>();
 
     @Override
     public List<Car> getAll() {
@@ -23,6 +24,8 @@ public class CarServiceListaLokalna implements CarServiceH2 {
 
     @Override
     public void add(Car car) {
+        nextId = nextId + 1L;
+        car.setId(nextId);
         cars.add(car);
     }
 

@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class CustomerServiceListaLokalna implements CustomerServiceH2 {
+public class CustomerServiceLocalListBean implements CustomerService {
     private List<Customer> customers = new ArrayList<>(Arrays.asList(
             new Customer("Jack", "Bauer", "male", "97123008537"),
             new Customer("Chloe", "O'Brian", "female", "97123002533")
