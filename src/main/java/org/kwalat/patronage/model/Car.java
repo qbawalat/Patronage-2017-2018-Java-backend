@@ -1,6 +1,7 @@
 package org.kwalat.patronage.model;
 
 
+import org.kwalat.patronage.validators.date.InDateRange;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -32,12 +33,15 @@ public class Car {
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past
+    @InDateRange
     private Date firstRegistrationDate;
 
     @NotNull
     private Date registrationBookDateOfIssue;
 
     @NotNull
+    @Size(max = 10)
+
     private String licenceNumber;
 
     public Car(Integer engineSize, String brand, Byte seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CarServiceH2Bean implements CarService {
+class CarServiceH2Bean implements CarService {
     @Autowired
     private CarRepository carRepository;
 

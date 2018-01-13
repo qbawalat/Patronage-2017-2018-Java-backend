@@ -14,6 +14,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 @SpringBootApplication
 @ComponentScan(basePackages = {"org.kwalat.patronage"})
 @EntityScan("org.kwalat.patronage")
@@ -28,6 +32,11 @@ public class PatronageApplication {
     @Bean
     public CommandLineRunner loadData(CustomerRepository customerRepository, CarRepository carRepository) {
         return (args) -> {
+
+            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+            Calendar cal = Calendar.getInstance();
+            String currentDate = dateFormat.format(cal.getTime());
+            log.info(currentDate);
             customerRepository.save(new Customer("Jack", "Bauer", "male", "97123008537"));
             customerRepository.save(new Customer("Chloe", "O'Brian", "female", "97123002533"));
             customerRepository.save(new Customer("Kim", "Bauer", "female", "94120408535"));

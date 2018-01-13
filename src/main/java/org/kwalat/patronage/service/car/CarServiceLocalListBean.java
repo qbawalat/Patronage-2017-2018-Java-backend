@@ -1,13 +1,12 @@
 package org.kwalat.patronage.service.car;
 
 import org.kwalat.patronage.model.Car;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class CarServiceLocalListBean implements CarService {
+//@Service
+class CarServiceLocalListBean implements CarService {
 
     private static Long nextId = 0L;
     private List<Car> cars = new ArrayList<>();
