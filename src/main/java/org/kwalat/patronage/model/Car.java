@@ -1,7 +1,9 @@
 package org.kwalat.patronage.model;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.kwalat.patronage.validators.date.InDateRange;
+import org.kwalat.patronage.validators.date.LegitDateOfIssue;
 import org.kwalat.patronage.validators.licence.LegitLicence;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -12,6 +14,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.*;
 import java.util.Date;
 
+@LegitDateOfIssue
 @Entity
 public class Car {
     @Id
@@ -27,12 +30,14 @@ public class Car {
     @Max(6)
     private Byte seats;
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past
     @InDateRange("1900-01-01")
+    @Past
     private Date firstRegistrationDate;
     @NotNull
-    @InDateRange("1960-01-01")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past
     private Date registrationBookDateOfIssue;
     @NotNull
