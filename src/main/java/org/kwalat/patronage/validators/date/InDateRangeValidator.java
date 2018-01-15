@@ -25,7 +25,7 @@ public class InDateRangeValidator implements ConstraintValidator<InDateRange, Da
     @Override
     public boolean isValid(java.util.Date value, ConstraintValidatorContext context) {
         try {
-            final Date min = dateParser.parse(constraintAnnotation.min());
+            final Date min = dateParser.parse(constraintAnnotation.value());
             return value == null || (value.after(min));
         } catch (ParseException ex) {
             throw new RuntimeException(ex);

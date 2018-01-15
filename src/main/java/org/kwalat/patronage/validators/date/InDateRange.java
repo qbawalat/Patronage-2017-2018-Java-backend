@@ -2,10 +2,14 @@ package org.kwalat.patronage.validators.date;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
-import java.lang.annotation.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.time.LocalDate;
 import java.util.Calendar;
+
+import static java.lang.annotation.ElementType.*;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 /**
  * @author Qba Walat
@@ -13,12 +17,13 @@ import java.util.Calendar;
  */
 @Documented
 @Constraint(validatedBy = InDateRangeValidator.class)
-@Target({ElementType.METHOD, ElementType.FIELD, ElementType.ANNOTATION_TYPE})
-@Retention(RetentionPolicy.RUNTIME)
+@Target({METHOD, FIELD, ANNOTATION_TYPE})
+@Retention(RUNTIME)
 public @interface InDateRange {
-    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+
     Calendar cal = Calendar.getInstance();
-    String currentDate = dateFormat.format(cal.getTime());
+    String currentDate = LocalDate.now().toString();
 
     String message() default "{validation.date.InDateRange.message}";
 
@@ -26,6 +31,13 @@ public @interface InDateRange {
 
     Class<? extends Payload>[] payload() default {};
 
-    String min() default "1900-01-01";
+    String value();
+
+    @Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE})
+    @Retention(RUNTIME)
+    @Documented
+    @interface List {
+        InDateRange[] value();
+    }
 
 }

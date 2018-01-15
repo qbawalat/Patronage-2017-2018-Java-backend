@@ -1,6 +1,8 @@
 package org.kwalat.patronage;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import org.kwalat.patronage.model.Customer;
 import org.kwalat.patronage.repository.CarRepository;
 import org.kwalat.patronage.repository.CustomerRepository;
@@ -30,6 +32,13 @@ public class PatronageApplication {
     }
 
     @Bean
+    public ObjectMapper objectMapper() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+        return objectMapper;
+    }
+
+    @Bean
     public CommandLineRunner loadData(CustomerRepository customerRepository, CarRepository carRepository) {
         return (args) -> {
 
@@ -40,7 +49,7 @@ public class PatronageApplication {
             customerRepository.save(new Customer("Jack", "Bauer", "male", "97123008537"));
             customerRepository.save(new Customer("Chloe", "O'Brian", "female", "97123002533"));
             customerRepository.save(new Customer("Kim", "Bauer", "female", "94120408535"));
-            log.info("Customers found with findAll():");
+            //            carRepository.save(new Car(600, "SKODA", 5, new Date().no, "1992-12-12", "AB60256323"));
             log.info("-------------------------------");
             for (Customer customer : customerRepository.findAll()) {
                 log.info(customer.toString());

@@ -2,6 +2,7 @@ package org.kwalat.patronage.model;
 
 
 import org.kwalat.patronage.validators.date.InDateRange;
+import org.kwalat.patronage.validators.licence.LegitLicence;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
@@ -16,35 +17,30 @@ public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @NotNull
     @Min(50)
     @Max(6999)
     private Integer engineSize;
-
     @NotNull
-    @Pattern(regexp = "SKODA|HONDA|FIAT")
-    private String brand;
-
+    private Brand brand;
     @Min(1)
     @Max(6)
     private Byte seats;
-
     @NotNull
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Past
-    @InDateRange
+    @InDateRange("1900-01-01")
     private Date firstRegistrationDate;
-
     @NotNull
+    @InDateRange("1960-01-01")
+    @Past
     private Date registrationBookDateOfIssue;
-
     @NotNull
     @Size(max = 10)
-
+    @LegitLicence()
     private String licenceNumber;
 
-    public Car(Integer engineSize, String brand, Byte seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {
+    public Car(Integer engineSize, Brand brand, Byte seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {
         this.engineSize = engineSize;
         this.brand = brand;
         this.seats = seats;
@@ -72,11 +68,11 @@ public class Car {
         this.engineSize = engineSize;
     }
 
-    public String getBrand() {
+    public Brand getBrand() {
         return brand;
     }
 
-    public void setBrand(String brand) {
+    public void setBrand(Brand brand) {
         this.brand = brand;
     }
 
@@ -112,5 +108,8 @@ public class Car {
         this.licenceNumber = licenceNumber;
     }
 
+    public enum Brand {
+        HONDA, FIAT, SKODA
+    }
 
 }
