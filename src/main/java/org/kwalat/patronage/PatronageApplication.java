@@ -10,7 +10,6 @@ import org.kwalat.patronage.repository.CustomerRepository;
 import org.kwalat.patronage.swagger.SwaggerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,8 +31,9 @@ public class PatronageApplication {
 
     private static final Logger log = LoggerFactory.getLogger(PatronageApplication.class);
 
-    @Value("${H2_STORAGE_ENABLED}")
-    private boolean h2StorageEnabled;
+
+    //    @Value("${H2_STORAGE_ENABLED}")
+    //    private boolean h2StorageEnabled;
 
     public static void main(String[] args) {
         SpringApplication.run(PatronageApplication.class, args);
@@ -65,13 +65,16 @@ public class PatronageApplication {
             for (Customer customer : customerRepository.findAll()) {
                 log.info(customer.toString());
             }
-            if (h2StorageEnabled) {
-                log.info("\n\nEnvironment variables:\n\tH2_STORAGE_ENABLED = " + h2StorageEnabled + "\nUsing H2 implementation.");
-            } else if (!h2StorageEnabled) {
-                log.info("\n\nEnvironment variables:\n\tH2_STORAGE_ENABLED = " + h2StorageEnabled + "\nUsing LocalList implementation.");
-            }
+            //            try {
+            //                if (h2StorageEnabled) {
+            //                    log.info("\n\nEnvironment variables:\n\tH2_STORAGE_ENABLED = " + h2StorageEnabled + "\nUsing H2 implementation.");
+            //                } else if (!h2StorageEnabled) {
+            //                    log.info("\n\nEnvironment variables:\n\tH2_STORAGE_ENABLED = " + h2StorageEnabled + "\nUsing LocalList implementation.");
+            //                }
+            //            } catch (NullPointerException exception) {
+            //                log.info("\n\nEnvironment variables:\n\tNone." + "\nUsing H2 implementation.");
+            //            }
             log.info("\n\nSwagger urls:\n\tschema: \thttp://localhost:8080/v2/api-docs\n\tswagger ui: http://localhost:8080/swagger-ui.html\n");
-
         };
     }
 }

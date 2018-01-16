@@ -13,7 +13,12 @@ public class H2ServiceCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        if (Boolean.parseBoolean(conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED"))) {
+        try {
+            if (!conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED").equals("false")) {
+                System.out.println("llllllllllllllllllh2");
+                return true;
+            }
+        } catch (NullPointerException e) {
             return true;
         }
         return false;

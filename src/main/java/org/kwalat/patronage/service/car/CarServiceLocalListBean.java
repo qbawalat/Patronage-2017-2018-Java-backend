@@ -3,12 +3,14 @@ package org.kwalat.patronage.service.car;
 import org.kwalat.patronage.conditions.LocalListServiceCondition;
 import org.kwalat.patronage.model.Car;
 import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Component
 @Conditional(value = LocalListServiceCondition.class)
 class CarServiceLocalListBean implements CarService {
 
