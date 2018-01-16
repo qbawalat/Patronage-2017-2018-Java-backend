@@ -15,7 +15,6 @@ public class LocalListServiceCondition implements Condition {
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         try {
             if (conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED").equals("false")) {
-                System.out.println("lllllllllllllllllllist");
                 return true;
             }
         } catch (NullPointerException e) {
