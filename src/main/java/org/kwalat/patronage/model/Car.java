@@ -3,7 +3,7 @@ package org.kwalat.patronage.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import org.kwalat.patronage.validators.date.InDateRange;
-import org.kwalat.patronage.validators.date.LegitDateOfIssue;
+import org.kwalat.patronage.validators.date.ValidCarRegistrationDate;
 import org.kwalat.patronage.validators.licence.LegitLicence;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -14,9 +14,10 @@ import javax.persistence.Id;
 import javax.validation.constraints.*;
 import java.util.Date;
 
-@LegitDateOfIssue
+@ValidCarRegistrationDate
 @Entity
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

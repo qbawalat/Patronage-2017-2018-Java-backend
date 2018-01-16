@@ -4,12 +4,13 @@ import org.kwalat.patronage.model.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class CustomerServiceLocalListBean implements CustomerService {
-    private List<Customer> customers = new ArrayList<>(Arrays.asList(new Customer("Jack", "Bauer", "male", "97123008537"), new Customer("Chloe", "O'Brian", "female", "97123002533")));
+
+    private static Long nextId = 0L;
+    private List<Customer> customers = new ArrayList<Customer>();
 
     @Override
     public List<Customer> getAll() {
@@ -23,6 +24,8 @@ public class CustomerServiceLocalListBean implements CustomerService {
 
     @Override
     public void add(Customer customer) {
+        nextId = nextId + 1L;
+        customer.setId(nextId);
         customers.add(customer);
     }
 

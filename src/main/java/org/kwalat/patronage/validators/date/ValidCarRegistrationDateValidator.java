@@ -9,9 +9,9 @@ import javax.validation.ConstraintValidatorContext;
  * @author Qba Walat
  * created on 15/01/2018
  */
-public class LegitDateOfIssueValidator implements ConstraintValidator<LegitDateOfIssue, Car> {
+public class ValidCarRegistrationDateValidator implements ConstraintValidator<ValidCarRegistrationDate, Car> {
     @Override
-    public void initialize(LegitDateOfIssue constraintAnnotation) {
+    public void initialize(ValidCarRegistrationDate constraintAnnotation) {
     }
 
     @Override

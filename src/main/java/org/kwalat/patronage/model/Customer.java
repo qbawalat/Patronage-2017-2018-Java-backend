@@ -12,13 +12,13 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
-    private String gender;
+    private Gender gender; //change to enum
     private String personalNumber;
 
     protected Customer() {
     }
 
-    public Customer(String firstName, String lastName, String gender, String personalNumber) {
+    public Customer(String firstName, String lastName, Gender gender, String personalNumber) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -41,11 +41,11 @@ public class Customer {
         this.lastName = lastName;
     }
 
-    public String getGender() {
+    public Gender getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(Gender gender) {
         this.gender = gender;
     }
 
@@ -57,9 +57,12 @@ public class Customer {
         this.personalNumber = personalNumber;
     }
 
-
     public Long getId() {
         return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     @Override
@@ -67,4 +70,7 @@ public class Customer {
         return String.format("Customer[id=%d, firstName='%s', lastName='%s', gender='%s', personalNumber='%s']", id, firstName, lastName, gender, personalNumber);
     }
 
+    public enum Gender {
+        MALE, FEMALE, OTHER
+    }
 }

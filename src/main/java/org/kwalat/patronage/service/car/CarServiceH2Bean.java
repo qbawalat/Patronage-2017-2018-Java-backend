@@ -1,13 +1,19 @@
 package org.kwalat.patronage.service.car;
 
+import org.kwalat.patronage.conditions.H2ServiceCondition;
 import org.kwalat.patronage.model.Car;
 import org.kwalat.patronage.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Conditional;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
+@Component
+@Conditional(value = H2ServiceCondition.class)
 class CarServiceH2Bean implements CarService {
     @Autowired
     private CarRepository carRepository;

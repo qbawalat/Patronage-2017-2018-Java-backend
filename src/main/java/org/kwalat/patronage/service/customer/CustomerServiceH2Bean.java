@@ -5,7 +5,6 @@ import org.kwalat.patronage.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -13,24 +12,23 @@ public class CustomerServiceH2Bean implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    private List<Customer> customers;
-
-    public List<Customer>getAll(){
-        List<Customer> customers = new ArrayList<>();
-        customerRepository.findAll().forEach(customers::add);
-        return customers;
+    public List<Customer> getAll() {
+        return customerRepository.findAll();
     }
 
-    public Customer get(Long id){
+    public Customer get(Long id) {
         return customerRepository.findOne(id);
     }
-    public void add(Customer customer){
+
+    public void add(Customer customer) {
         customerRepository.save(customer);
     }
-    public void delete(Long id){
+
+    public void delete(Long id) {
         customerRepository.delete(id);
     }
-    public void update(Long id, Customer customer){
+
+    public void update(Long id, Customer customer) {
         customerRepository.save(customer);
     }
 }
