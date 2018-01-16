@@ -13,13 +13,10 @@ public class LocalListServiceCondition implements Condition {
 
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
-        try {
-            if (conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED").equals("false")) {
-                return true;
-            }
-        } catch (NullPointerException e) {
-            return false;
+        if (conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED") != null && !Boolean.getBoolean(conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED"))) {
+            return true;
         }
+
         return false;
     }
 }
