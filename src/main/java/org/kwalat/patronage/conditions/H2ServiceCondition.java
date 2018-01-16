@@ -14,11 +14,6 @@ public class H2ServiceCondition implements Condition {
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String h2Enabled = conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED");
-
-        if (h2Enabled == null || Boolean.valueOf(h2Enabled)) {
-            return true;
-        }
-
-        return false;
+        return h2Enabled == null || Boolean.valueOf(h2Enabled);
     }
 }
