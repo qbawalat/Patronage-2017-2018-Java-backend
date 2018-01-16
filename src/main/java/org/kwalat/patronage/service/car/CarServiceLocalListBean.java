@@ -5,9 +5,7 @@ import org.kwalat.patronage.model.Car;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +28,7 @@ class CarServiceLocalListBean implements CarService {
     }
 
     @Override
-    public void add(@Valid @RequestBody Car car) {
+    public void add(Car car) {
         nextId = nextId + 1L;
         car.setId(nextId);
         cars.add(car);
@@ -42,7 +40,7 @@ class CarServiceLocalListBean implements CarService {
     }
 
     @Override
-    public void update(Long id, @Valid @RequestBody Car car) {
+    public void update(Long id, Car car) {
         for (int i = 0; i < cars.size(); i++) {
             Car currentCar = cars.get(i);
             if (currentCar.getId().equals(id)) {

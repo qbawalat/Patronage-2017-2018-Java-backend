@@ -5,6 +5,7 @@ import org.kwalat.patronage.service.car.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -24,7 +25,7 @@ public class CarController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/cars")
-    public void add(@RequestBody Car car) {
+    public void add(@Valid @RequestBody Car car) {
         carService.add(car);
     }
 
@@ -34,7 +35,7 @@ public class CarController {
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "/cars/{id}")
-    public void update(@RequestBody Car car, @PathVariable Long id) {
+    public void update(@Valid @RequestBody Car car, @PathVariable Long id) {
         carService.update(id, car);
     }
 

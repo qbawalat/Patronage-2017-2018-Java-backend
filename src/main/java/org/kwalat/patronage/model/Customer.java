@@ -12,7 +12,7 @@ public class Customer {
     private Long id;
     private String firstName;
     private String lastName;
-    private Gender gender; //change to enum
+    private Gender gender;
     private String personalNumber;
 
     protected Customer() {
