@@ -20,7 +20,6 @@ import java.util.Date;
 @ValidCarRegistrationDate
 @Entity
 @XmlRootElement
-
 public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

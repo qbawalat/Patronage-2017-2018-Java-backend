@@ -1,5 +1,8 @@
 package org.kwalat.patronage.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,10 +14,20 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents id of customer entity", required = true)
     private Long id;
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's first name", required = true)
     private String firstName;
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's last name", required = true)
     private String lastName;
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's gender", required = true)
     private Gender gender;
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's personal number", required = true)
     private String personalNumber;
 
     protected Customer() {

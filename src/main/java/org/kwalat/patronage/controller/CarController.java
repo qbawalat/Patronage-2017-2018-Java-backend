@@ -13,7 +13,6 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-//@RequestMapping("/api")
 @Api(value = "car", description = "Rest API for car operations", tags = "Car API")
 @ApiResponses(value = {
         @ApiResponse(code = 400, message = "Request is not valid"),
@@ -69,7 +68,7 @@ public class CarController {
     @ApiOperation(value = "Modify car", response = Car.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "The car has been modified"),
-            @ApiResponse(code = 304, message = "The same resource already exists")
+            @ApiResponse(code = 304, message = "The same customer already exists")
     })
     public void update(@Valid @RequestBody Car car, @PathVariable Long id) {
         carService.update(id, car);
