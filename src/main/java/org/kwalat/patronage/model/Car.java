@@ -2,6 +2,7 @@ package org.kwalat.patronage.model;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import org.kwalat.patronage.validators.date.InDateRange;
 import org.kwalat.patronage.validators.date.ValidCarRegistrationDate;
 import org.kwalat.patronage.validators.licence.LegitLicence;
@@ -12,10 +13,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.*;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 
 @ValidCarRegistrationDate
 @Entity
+@XmlRootElement
 public class Car {
 
     @Id
@@ -44,6 +47,7 @@ public class Car {
     @NotNull
     @Size(max = 10)
     @LegitLicence()
+    @ApiModelProperty(notes = "Provided car licence number", required = true)
     private String licenceNumber;
 
     public Car(Integer engineSize, Brand brand, Byte seats, Date firstRegistrationDate, Date registrationBookDateOfIssue, String licenceNumber) {
