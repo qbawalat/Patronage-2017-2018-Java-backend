@@ -7,7 +7,6 @@ import org.kwalat.patronage.model.Car;
 import org.kwalat.patronage.model.Customer;
 import org.kwalat.patronage.repository.CarRepository;
 import org.kwalat.patronage.repository.CustomerRepository;
-import org.kwalat.patronage.swagger.SwaggerConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -49,7 +48,7 @@ public class PatronageApplication {
     @Bean
     public CommandLineRunner loadData(CustomerRepository customerRepository, CarRepository carRepository) {
         return (args) -> {
-            SwaggerConfig swaggerConfig = new SwaggerConfig();
+            //            SwaggerConfig swaggerConfig = new SwaggerConfig();
             DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
             Calendar cal = Calendar.getInstance();
             String currentDate = dateFormat.format(cal.getTime());
@@ -57,9 +56,9 @@ public class PatronageApplication {
             customerRepository.save(new Customer("Jack", "Bauer", Customer.Gender.MALE, "97123008537"));
             customerRepository.save(new Customer("Chloe", "O'Brian", Customer.Gender.FEMALE, "97123002533"));
             customerRepository.save(new Customer("Alex", "Bauer", Customer.Gender.OTHER, "94120408535"));
-            carRepository.save(new Car(640, (Car.Brand.HONDA), (byte) 5, new Date(-5000), new Date(1000), "AZ9205"));
-            carRepository.save(new Car(1040, (Car.Brand.FIAT), (byte) 3, new Date(-2000), new Date(100), "ZS52152055"));
-            carRepository.save(new Car(6999, (Car.Brand.SKODA), (byte) 6, new Date(-1600), new Date(), "GP1666205"));
+            carRepository.save(new Car(640, (Car.Brand.HONDA), (byte) 5, new Date(-9000), new Date(1000), "AZ9205"));
+            carRepository.save(new Car(1040, (Car.Brand.FIAT), (byte) 3, new Date(-10000), new Date(3005), "ZS52152055"));
+            carRepository.save(new Car(6999, (Car.Brand.SKODA), (byte) 6, new Date(-8600), new Date(2000), "GP1666205"));
 
             log.info("-------------------------------");
             for (Customer customer : customerRepository.findAll()) {
