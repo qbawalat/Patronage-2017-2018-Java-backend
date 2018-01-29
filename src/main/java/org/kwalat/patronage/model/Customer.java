@@ -1,18 +1,38 @@
 package org.kwalat.patronage.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents id of customer entity", required = true)
     private Long id;
+    @NotNull
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's first name", required = true)
     private String firstName;
+    @NotNull
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's last name", required = true)
     private String lastName;
+    @NotNull
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's gender", required = true)
     private Gender gender;
+    @NotNull
+    @JsonProperty(required = true)
+    @ApiModelProperty(value = "Represents customer's personal number", required = true)
     private String personalNumber;
 
     protected Customer() {
