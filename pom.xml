@@ -2,12 +2,10 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>org.kwalat</groupId>
     <artifactId>patronage</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
     <name>patronage</name>
     <description>Project for Patronage 2017-2018 Java backend task</description>
 
@@ -89,11 +87,7 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.codehaus.woodstox</groupId>
-            <artifactId>woodstox-core-asl</artifactId>
-        </dependency>
-
+      
 
     </dependencies>
 
@@ -121,8 +115,6 @@
                 </dependencies>
             </plugin>
         </plugins>
-
     </build>
-
 
 </project>
