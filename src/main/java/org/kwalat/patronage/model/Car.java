@@ -32,7 +32,7 @@ public class Car {
     @JsonProperty(required = true)
     @ApiModelProperty(value = "Represents car's engine size", required = true)
     private Integer engineSize;
-    @NotNull
+    @NotNull(message = "Must be one of the following: HONDA, SKODA or FIAT")
     @JsonProperty(required = true)
     @ApiModelProperty(value = "Represents car's brand", required = true)
     private Brand brand;
@@ -44,21 +44,21 @@ public class Car {
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @InDateRange("1900-01-01")
-    @Past
+    @InDateRange(value = "1900-01-01", message = "Must be past 1900-01-01")
+    @Past(message = "Must be before registration book of issue")
     @JsonProperty(required = true)
     @ApiModelProperty(value = "Represents the first registration date of car's registration book ", required = true)
     private Date firstRegistrationDate;
     @NotNull
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Past
+    @Past(message = "Must be after first registration date")
     @JsonProperty(required = true)
     @ApiModelProperty(value = "Represents the date of issue of registration book", required = true)
     private Date registrationBookDateOfIssue;
     @NotNull
     @Size(max = 10)
-    @LegitLicence()
+    @LegitLicence(message = "First two characters are capital letters, rest are numbers Example: ZS5642354")
     @JsonProperty(required = true)
     @ApiModelProperty(value = "Represents car's licence number", required = true)
     private String licenceNumber;
