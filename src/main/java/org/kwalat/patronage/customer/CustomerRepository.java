@@ -1,7 +1,6 @@
-package org.kwalat.patronage.repository;
+package org.kwalat.patronage.customer;
 
-import org.kwalat.patronage.model.Car;
-import org.kwalat.patronage.model.Customer;
+import org.kwalat.patronage.customer.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

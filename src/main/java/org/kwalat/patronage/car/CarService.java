@@ -1,6 +1,6 @@
-package org.kwalat.patronage.service.car;
+package org.kwalat.patronage.car;
 
-import org.kwalat.patronage.model.Car;
+import org.kwalat.patronage.car.Car;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

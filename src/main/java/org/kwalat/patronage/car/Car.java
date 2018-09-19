@@ -1,4 +1,4 @@
-package org.kwalat.patronage.model;
+package org.kwalat.patronage.car;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;

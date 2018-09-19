@@ -1,4 +1,4 @@
-package org.kwalat.patronage.model;
+package org.kwalat.patronage.customer;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModelProperty;

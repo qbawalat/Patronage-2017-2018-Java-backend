@@ -1,7 +1,6 @@
-package org.kwalat.patronage.service.car;
+package org.kwalat.patronage.car;
 
 import org.kwalat.patronage.conditions.LocalListServiceCondition;
-import org.kwalat.patronage.model.Car;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;

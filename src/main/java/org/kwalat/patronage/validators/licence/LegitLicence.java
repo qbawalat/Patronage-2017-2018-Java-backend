@@ -25,5 +25,4 @@ public @interface LegitLicence {
 
     Class<? extends Payload>[] payload() default {};
 
-
 }

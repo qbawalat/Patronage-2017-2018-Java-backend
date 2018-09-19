@@ -1,11 +1,9 @@
-package org.kwalat.patronage.controller;
+package org.kwalat.patronage.customer;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
-import org.kwalat.patronage.model.Customer;
-import org.kwalat.patronage.service.customer.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;

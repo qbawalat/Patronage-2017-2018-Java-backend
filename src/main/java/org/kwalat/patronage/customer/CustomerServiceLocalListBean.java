@@ -1,6 +1,5 @@
-package org.kwalat.patronage.service.customer;
+package org.kwalat.patronage.customer;
 
-import org.kwalat.patronage.model.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

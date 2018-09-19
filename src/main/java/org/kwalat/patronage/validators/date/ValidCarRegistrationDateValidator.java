@@ -1,6 +1,6 @@
 package org.kwalat.patronage.validators.date;
 
-import org.kwalat.patronage.model.Car;
+import org.kwalat.patronage.car.Car;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;

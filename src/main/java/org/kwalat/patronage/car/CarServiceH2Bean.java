@@ -1,8 +1,6 @@
-package org.kwalat.patronage.service.car;
+package org.kwalat.patronage.car;
 
 import org.kwalat.patronage.conditions.H2ServiceCondition;
-import org.kwalat.patronage.model.Car;
-import org.kwalat.patronage.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Component;

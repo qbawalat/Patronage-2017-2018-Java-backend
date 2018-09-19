@@ -1,7 +1,5 @@
-package org.kwalat.patronage.service.customer;
+package org.kwalat.patronage.customer;
 
-import org.kwalat.patronage.model.Customer;
-import org.kwalat.patronage.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
