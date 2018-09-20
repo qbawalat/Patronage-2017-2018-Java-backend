@@ -10,7 +10,6 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
  */
 
 public class H2ServiceCondition implements Condition {
-
     @Override
     public boolean matches(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
         String h2Enabled = conditionContext.getEnvironment().getProperty("H2_STORAGE_ENABLED");

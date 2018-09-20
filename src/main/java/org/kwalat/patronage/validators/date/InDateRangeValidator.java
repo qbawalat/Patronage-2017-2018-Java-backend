@@ -14,7 +14,6 @@ import java.util.Date;
 public class InDateRangeValidator implements ConstraintValidator<InDateRange, Date> {
 
     private final SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd");
-
     private InDateRange constraintAnnotation;
 
     @Override

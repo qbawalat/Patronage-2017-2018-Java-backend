@@ -5,8 +5,6 @@ import javax.validation.Payload;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
-import java.time.LocalDate;
-import java.util.Calendar;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
@@ -20,11 +18,10 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target({METHOD, FIELD, ANNOTATION_TYPE})
 @Retention(RUNTIME)
 public @interface InDateRange {
-
-
+    /*
     Calendar cal = Calendar.getInstance();
     String currentDate = LocalDate.now().toString();
-
+*/
     String message() default "{validation.date.InDateRange.message}";
 
     Class<?>[] groups() default {};
@@ -32,6 +29,7 @@ public @interface InDateRange {
     Class<? extends Payload>[] payload() default {};
 
     String value();
+/*
 
     @Target({FIELD, METHOD, PARAMETER, ANNOTATION_TYPE})
     @Retention(RUNTIME)
@@ -39,5 +37,6 @@ public @interface InDateRange {
     @interface List {
         InDateRange[] value();
     }
+*/
 
 }

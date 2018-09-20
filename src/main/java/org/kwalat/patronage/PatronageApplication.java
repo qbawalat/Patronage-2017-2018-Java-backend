@@ -18,9 +18,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.Date;
 
 @SpringBootApplication
@@ -30,7 +30,6 @@ import java.util.Date;
 public class PatronageApplication {
 
     private static final Logger log = LoggerFactory.getLogger(PatronageApplication.class);
-
 
     @Value("${H2_STORAGE_ENABLED}")
     private Boolean h2StorageEnabled;
@@ -49,29 +48,17 @@ public class PatronageApplication {
     @Bean
     public CommandLineRunner loadData(CustomerRepository customerRepository, CarRepository carRepository) {
         return (args) -> {
-            DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-            Calendar cal = Calendar.getInstance();
-            String currentDate = dateFormat.format(cal.getTime());
-            log.info(currentDate);
+            logCurrentDateTime(ZonedDateTime.now());
             saveInitialDataToRepositories(customerRepository, carRepository);
             log.info("-------------------------------");
             customerRepository.findAll().forEach(customer -> log.info(customer.toString()));
-            /*for (Customer customer : customerRepository.findAll()) {
-                log.info(customer.toString());
-            }
-                        try {
-                            if (h2StorageEnabled) {
-                                log.info("\n\nEnvironment variables:\n\tH2_STORAGE_ENABLED = " + h2StorageEnabled + "\nUsing H2 implementation.");
-                            } else if (!h2StorageEnabled) {
-                                log.info("\n\nEnvironment variables:\n\tH2_STORAGE_ENABLED = " + h2StorageEnabled + "\nUsing LocalList implementation.");
-                            }
-                        } catch (NullPointerException exception) {
-                            log.info("\n\nEnvironment variables:\n\tNone." + "\nUsing H2 implementation.");
-                        }
-            */
             log.info("H2 enabled is set to " + h2StorageEnabled);
             log.info("\n\nSwagger urls:\n\tschema: \thttp://localhost:8080/v2/api-docs\n\tswagger ui: http://localhost:8080/swagger-ui.html\n");
         };
+    }
+
+    private void logCurrentDateTime(ZonedDateTime zonedDateTime) {
+        log.info(zonedDateTime.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.FULL)));
     }
 
     private void saveInitialDataToRepositories(CustomerRepository customerRepository, CarRepository carRepository) {
